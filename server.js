@@ -201,8 +201,8 @@ app.get('/', (req, res) => {
   });
 });
 
-// start server (puerto fijo, sin variables de entorno)
-const PORT = 3000;
+// start server (usar PORT de entorno si existe, si no 3000)
+const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
