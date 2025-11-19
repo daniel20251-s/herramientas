@@ -16,8 +16,8 @@ app.use(express.urlencoded({ extended: true }));
 // Serve static files (front-end) from repo root so the hosted server can also deliver the UI.
 app.use(express.static(path.join(__dirname)));
 
-// MongoDB connection (use env MONGODB_URI if present)
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://daniel:daniel25@capacitacion.nxd7yl9.mongodb.net/?retryWrites=true&w=majority&appName=capacitacion&authSource=admin';
+// MongoDB connection (hardcoded, sin variables de entorno)
+const MONGODB_URI = 'mongodb+srv://daniel:daniel25@capacitacion.nxd7yl9.mongodb.net/?retryWrites=true&w=majority&appName=capacitacion&authSource=admin';
 
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(()=> console.log('MongoDB connected'))
@@ -201,8 +201,8 @@ app.get('/', (req, res) => {
   });
 });
 
-// start server
-const PORT = process.env.PORT || 3000;
+// start server (puerto fijo, sin variables de entorno)
+const PORT = 3000;
 server.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
